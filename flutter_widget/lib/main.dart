@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widget/appbar_widget.dart';
+import 'package:flutter_widget/button_widget.dart';
 import 'package:flutter_widget/container_widget.dart';
+import 'package:flutter_widget/row_widget.dart';
+import 'package:flutter_widget/stack_widget.dart';
 import 'package:flutter_widget/text_widget.dart';
+
+import 'column_widget.dart';
 
 void main() => runApp(new MyApp());
 
@@ -19,7 +24,10 @@ class MyApp extends StatelessWidget {
         'Text': (BuildContext context) => TextWidget(),
         'AppBar': (BuildContext context) => AppBarWidget(),
         'Container' : (BuildContext context) => ContainerWidget(),
-        // 'Column' : (BuildContext context) =
+        'Column' : (BuildContext context) => ColumnWidget(),
+        'Row' : (BuildContext context) => RowWidget(),
+        'Button' :(BuildContext context) => ButtonWidget(),
+        'Stack' : (BuildContext context) => StackWidget(),
       },
       // home
     );
