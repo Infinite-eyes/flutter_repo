@@ -2,6 +2,8 @@ import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_whats_app_clone/pages/camera_screen.dart';
+import 'package:flutter_whats_app_clone/pages/chat_screen.dart';
+import 'package:flutter_whats_app_clone/pages/status_screen.dart';
 
 class WhatsAppHome extends StatefulWidget {
   final List<CameraDescription> cameras;
@@ -21,7 +23,7 @@ class _WhatsAppHomeState extends State<WhatsAppHome>
   void initState() {
     super.initState();
 
-    _tabController = TabController(vsync: this, initialIndex: 0, length: 1);
+    _tabController = TabController(vsync: this, initialIndex: 1, length: 3);
     _tabController.addListener(() {
       if (_tabController.index == 1) {
         showFab = true;
@@ -43,8 +45,8 @@ class _WhatsAppHomeState extends State<WhatsAppHome>
             indicatorColor: Colors.white,
             tabs: <Widget>[
               Tab(icon: Icon(Icons.camera_alt)),
-              // Tab(text: "CHATS"),
-              // Tab(text: "STATUS"),
+              Tab(text: "CHATS"),
+              Tab(text: "STATUS"),
               // Tab(text: "CALLS"),
             ]),
         actions: <Widget>[
@@ -59,7 +61,8 @@ class _WhatsAppHomeState extends State<WhatsAppHome>
         controller: _tabController,
         children: <Widget>[
           CameraScreen(widget.cameras),
-
+          ChatScreen(),
+          StatusScreen(),
         ],
       ),
       floatingActionButton: showFab
