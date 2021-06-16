@@ -1,6 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_whats_app_clone/pages/call_screen.dart';
 import 'package:flutter_whats_app_clone/pages/camera_screen.dart';
 import 'package:flutter_whats_app_clone/pages/chat_screen.dart';
 import 'package:flutter_whats_app_clone/pages/status_screen.dart';
@@ -23,7 +24,7 @@ class _WhatsAppHomeState extends State<WhatsAppHome>
   void initState() {
     super.initState();
 
-    _tabController = TabController(vsync: this, initialIndex: 1, length: 3);
+    _tabController = TabController(vsync: this, initialIndex: 1, length: 4);
     _tabController.addListener(() {
       if (_tabController.index == 1) {
         showFab = true;
@@ -47,6 +48,7 @@ class _WhatsAppHomeState extends State<WhatsAppHome>
               Tab(icon: Icon(Icons.camera_alt)),
               Tab(text: "CHATS"),
               Tab(text: "STATUS"),
+              Tab(text: "CALLS"),
               // Tab(text: "CALLS"),
             ]),
         actions: <Widget>[
@@ -63,16 +65,17 @@ class _WhatsAppHomeState extends State<WhatsAppHome>
           CameraScreen(widget.cameras),
           ChatScreen(),
           StatusScreen(),
+          CallsScreen()
         ],
       ),
       floatingActionButton: showFab
           ? FloatingActionButton(
-          backgroundColor: Theme.of(context).accentColor,
-          child:Icon(
-            Icons.message,
-            color:Colors.white,
-          ),
-          onPressed: () => print("open chats"))
+              backgroundColor: Theme.of(context).accentColor,
+              child: Icon(
+                Icons.message,
+                color: Colors.white,
+              ),
+              onPressed: () => print("open chats"))
           : null,
     );
   }
