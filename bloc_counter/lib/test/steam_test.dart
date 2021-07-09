@@ -13,7 +13,7 @@ Future<int> sumStream(Stream<int> stream) async{
   }
   return sum;
 }
-void main() async{
+void stream() async{
   Stream<int> stream = countStream(10);
   int sum = await sumStream(stream);
   print(sum);
