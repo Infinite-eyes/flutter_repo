@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:stack_over_flow_app/home_model.dart';
 
 class HomeProvider {
+
   HomeProvider();
 
   Future<QuestionData> getData() async {

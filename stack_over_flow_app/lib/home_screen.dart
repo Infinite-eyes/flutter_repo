@@ -9,11 +9,7 @@ import 'home_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
 
-  const HomeScreen({
-    Key key,
-    @required HomeBloc homeBloc,
-  })
-      : _homeBloc = homeBloc,
+  const HomeScreen({Key key, @required HomeBloc homeBloc,}): _homeBloc = homeBloc,
         super(key: key);
 
   final HomeBloc _homeBloc;
@@ -35,7 +31,7 @@ class HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    this._homeBloc.dispatch(LoadHomeEvent())
+    this._homeBloc.dispatch(LoadHomeEvent());
   }
 
   @override
