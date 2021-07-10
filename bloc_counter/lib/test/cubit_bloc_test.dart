@@ -336,49 +336,49 @@ import 'package:bloc/bloc.dart';
 // }
 
 //v10
-enum CounterEvent {increment}
-class CounterBloc extends Bloc<CounterEvent,int>{
-
-  CounterBloc():super(0);
-  
-  @override
-  Stream<int> mapEventToState(CounterEvent event) async*  {
-    switch(event){
-      case CounterEvent.increment:
-        addError(Exception('increment error!'),StackTrace.current);
-        yield state + 1;
-        break;
-    }
-  }
-
-  @override
-  void onChange(Change<int> change) {
-    super.onChange(change);
-    print(change);
-  }
-
-  @override
-  void onTransition(Transition<CounterEvent, int> transition) {
-    super.onTransition(transition);
-    print(transition);
-  }
-
-  @override
-  void onError(Object error, StackTrace stackTrace) {
-    print('$error,$stackTrace');
-    super.onError(error, stackTrace);
-  }
-
-
-  @override
-  Stream<Transition<CounterEvent, int>> transformEvents(Stream<CounterEvent> events, transitionFn) {
-    return super.transformEvents(events, transitionFn);
-  }
-
-}
-void blocTest7() {
-  // Bloc.observer = SimpleBlocObserver();
-  CounterBloc()
-    ..add(CounterEvent.increment)
-    ..close();
-}
+// enum CounterEvent {increment}
+// class CounterBloc extends Bloc<CounterEvent,int>{
+//
+//   CounterBloc():super(0);
+//
+//   @override
+//   Stream<int> mapEventToState(CounterEvent event) async*  {
+//     switch(event){
+//       case CounterEvent.increment:
+//         addError(Exception('increment error!'),StackTrace.current);
+//         yield state + 1;
+//         break;
+//     }
+//   }
+//
+//   @override
+//   void onChange(Change<int> change) {
+//     super.onChange(change);
+//     print(change);
+//   }
+//
+//   @override
+//   void onTransition(Transition<CounterEvent, int> transition) {
+//     super.onTransition(transition);
+//     print(transition);
+//   }
+//
+//   @override
+//   void onError(Object error, StackTrace stackTrace) {
+//     print('$error,$stackTrace');
+//     super.onError(error, stackTrace);
+//   }
+//
+//
+//   @override
+//   Stream<Transition<CounterEvent, int>> transformEvents(Stream<CounterEvent> events, transitionFn) {
+//     return super.transformEvents(events, transitionFn);
+//   }
+//
+// }
+// void blocTest7() {
+//   // Bloc.observer = SimpleBlocObserver();
+//   CounterBloc()
+//     ..add(CounterEvent.increment)
+//     ..close();
+// }
