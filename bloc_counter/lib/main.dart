@@ -22,20 +22,8 @@ void main() {
   // blocTest6();
   // blocTest7();
 
-  runApp(new App());
+  runApp(new App1());
+  // runApp(new App());
 
-  // runApp(new MyApp());
-}
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-        title: 'Flutter Bloc Demo',
-        debugShowCheckedModeBanner: false,
-        theme: new ThemeData(
-          primarySwatch: Colors.orange,
-        ),
-        home: CounterPage());
-  }
 }
