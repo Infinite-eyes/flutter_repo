@@ -31,12 +31,17 @@ dependencies:
 
   bloc: ^7.0.0
   flutter_bloc: ^7.0.0
-
+  provider: ^5.0.0
+  equatable: ^2.0.3
+  rxdart: ^0.27.1
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  test: ^1.16.0  #https://pub.flutter-io.cn/packages/test
+  bloc_test: ^8.0.0
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

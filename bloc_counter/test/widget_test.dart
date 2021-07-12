@@ -5,26 +5,40 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/material.dart';
+
+import 'package:bloc_counter/test/counter_bloc_test.dart';
+import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:bloc_counter/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  group('CounterBloc',(){
+     CounterBloc counterBloc;
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+     setUp((){
+       counterBloc = CounterBloc();
+     });
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+     test('ínitial state is 0',(){
+       expect(counterBloc.state,0);
+     });
+
+    blocTest(
+      'emits [1] when CounterEvent.increment is added',
+      build: ()=> counterBloc,
+      act: (bloc) => bloc.add(CounterEvent.increment),
+      expect:()=>[1],
+    );
+
+    blocTest(
+      'emits [-1] when COunterEvent.decrement is added',
+      build: ()=> counterBloc,
+      act: (bloc) => bloc.add(CounterEvent.decrement),
+      expect: ()=>[-1],
+    );
+
   });
+
+
 }
