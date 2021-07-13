@@ -725,48 +725,38 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<LoginViewModel>(
-      create: (BuildContext context) {
-        return LoginViewModel(loginService: LoginService());
-      },
-      child: Scaffold(
-          appBar: AppBar(
-            title: Text('provider'),
-          ),
-          body: Column(
-            children: <Widget>[
-              Consumer<LoginViewModel>(
-                builder: (context, model, child) {
-                  return Text(model.info);
-                },
-              ),
-              Consumer<LoginViewModel>(
-                builder: (context, model, child) {
-                  return FlatButton(
-                    color: Colors.tealAccent,
-                    onPressed: () => model.login("pwd"),
-                    child: Text("登录"),
-                  );
-                },
-              )
-            ],
-          )),
+    return BaseWidget<LoginViewModel>(
+      model: LoginViewModel(loginService: LoginService()),
+      builder: (context, model, child) => Scaffold(
+        appBar: AppBar(
+          title: Text('provider'),
+        ),
+        body: Column(
+          children: <Widget>[
+            model.state == ViewState.Loading
+                ? Center(child: CircularProgressIndicator())
+                : Text(model.info),
+            FlatButton(
+                color: Colors.tealAccent,
+                onPressed: () => model.login("pwd"),
+                child: Text("登录"))
+          ],
+        ),
+      ),
     );
   }
 }
 
-enum ViewState { Loading, Success, Failure }
-
-class LoginViewModel extends ChangeNotifier {
+class LoginViewModel extends BaseModel {
   LoginService _loginService;
-
   String info = '请登录';
 
   LoginViewModel({LoginService loginService}) : _loginService = loginService;
 
   Future<String> login(String pwd) async {
+    setState(ViewState.Loading);
     info = await _loginService.login(pwd);
-    notifyListeners();
+    setState(ViewState.Success);
   }
 }
 
@@ -785,10 +775,11 @@ class BaseWidget<T extends ChangeNotifier> extends StatefulWidget {
   final Widget child;
   final Function(T) onModelReady;
 
-  BaseWidget({Key key, this.model, this.builder, this.child, this.onModelReady}) : super(key: key);
+  BaseWidget({Key key, this.model, this.builder, this.child, this.onModelReady})
+      : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _BaseWidgetState();
+  State<StatefulWidget> createState() => _BaseWidgetState<T>();
 }
 
 class _BaseWidgetState<T extends ChangeNotifier> extends State<BaseWidget<T>> {
@@ -797,28 +788,34 @@ class _BaseWidgetState<T extends ChangeNotifier> extends State<BaseWidget<T>> {
   @override
   void initState() {
     model = widget.model;
+
+    if (widget.onModelReady != null) {
+      widget.onModelReady(model);
+    }
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<T>.value(
-        value: model,
-        child: Consumer<T>(
-          builder: widget.builder,
-          child: widget.child,
-        ));
+    return ChangeNotifierProvider<T>(
+      create: (BuildContext context) => model,
+      child: Consumer<T>(
+        builder: widget.builder,
+        child: widget.child,
+      ),
+    );
   }
 }
 
-// class BaseModel extends ChangeNotifier{
-//
-//   ViewState _state = ViewState.Loading;
-//   ViewState get state => _state;
-//
-//   void setState(ViewState viewState){
-//     _state = viewState;
-//     notifyListeners();
-//   }
-// }
-//
+enum ViewState { Loading, Success, Failure, None }
+
+class BaseModel extends ChangeNotifier {
+  ViewState _state = ViewState.None;
+
+  ViewState get state => _state;
+
+  void setState(ViewState viewState) {
+    _state = viewState;
+    notifyListeners();
+  }
+}
