@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ui_kit/ui/page/home_page.dart';
+import 'package:ui_kit/ui/page/notfound/notfound_page.dart';
+import 'package:ui_kit/ui/profile/profile_one_page.dart';
+import 'package:ui_kit/utils/tanslations.dart';
 import 'package:ui_kit/utils/uidata.dart';
 
 import 'di/dependency_injection.dart';
@@ -9,9 +15,7 @@ void main() {
   runApp(MyApp());
 }
 
-
-class MyApp extends StatelessWidget{
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,15 +24,27 @@ class MyApp extends StatelessWidget{
           primaryColor: Colors.black,
           fontFamily: UIData.quickFont,
           primarySwatch: Colors.amber),
-
       debugShowCheckedModeBanner: false,
       showPerformanceOverlay: false,
-      // home:
+      home: HomePage(),
+      localizationsDelegates: [
+        const TranslationsDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      routes: <String, WidgetBuilder>{
+        UIData.homeRoute: (BuildContext context) => HomePage(),
+        UIData.profileOneRoute :  (BuildContext context) => ProfileOnePage(),
 
-
-
-    );;
+      },
+      onUnknownRoute: (RouteSettings rs) => new MaterialPageRoute(
+          builder: (context) => new NotFoundPage(
+                appTitle: UIData.coming_soon,
+                icon: FontAwesomeIcons.solidSmile,
+                title: UIData.coming_soon,
+                message: "Under Development",
+                iconColor: Colors.green,
+              )),
+    );
   }
-
-
 }
