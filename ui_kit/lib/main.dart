@@ -3,7 +3,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ui_kit/ui/page/home_page.dart';
 import 'package:ui_kit/ui/page/notfound/notfound_page.dart';
+import 'package:ui_kit/ui/page/timeline/timeline_one_page.dart';
 import 'package:ui_kit/ui/profile/profile_one_page.dart';
+import 'package:ui_kit/ui/profile/profile_two_page.dart';
 import 'package:ui_kit/utils/tanslations.dart';
 import 'package:ui_kit/utils/uidata.dart';
 
@@ -35,6 +37,8 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         UIData.homeRoute: (BuildContext context) => HomePage(),
         UIData.profileOneRoute :  (BuildContext context) => ProfileOnePage(),
+        UIData.profileTwoRoute: (BuildContext context) => ProfileTwoPage(),
+        UIData.timelineOneRoute: (BuildContext context) => TimelineOnePage(),
 
       },
       onUnknownRoute: (RouteSettings rs) => new MaterialPageRoute(

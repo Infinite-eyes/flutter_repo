@@ -5,7 +5,6 @@ import 'package:ui_kit/ui/widgets/common_scaffold.dart';
 import 'package:ui_kit/ui/widgets/profile_tile.dart';
 
 class ProfileOnePage extends StatelessWidget {
-
   var deviceSize;
 
   Widget profileColumn() => Container(
@@ -75,110 +74,81 @@ class ProfileOnePage extends StatelessWidget {
   }
 
   Widget descColumn() => Container(
-    height: deviceSize.height * 0.13,
-    child: Center(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 50.0),
-        child: Text(
-          "Google Developer Expert for Flutter. Passionate #Flutter, #Android Developer. #Entrepreneur #YouTuber",
-          style: TextStyle(fontWeight: FontWeight.w700),
-          textAlign: TextAlign.center,
-          maxLines: 3,
-          softWrap: true,
-        ),
-      ),
-    ),
-  );
-
-  Widget accountColumn() => FittedBox(
-    fit: BoxFit.fill,
-    child: Container(
-      height: deviceSize.height * 0.3,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
-          FittedBox(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                ProfileTile(
-                  title: "Website",
-                  subtitle: "about.me/imthepk",
-                ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                ProfileTile(
-                  title: "Phone",
-                  subtitle: "+919876543210",
-                ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                ProfileTile(
-                  title: "YouTube",
-                  subtitle: "youtube.com/mtechviral",
-                ),
-              ],
+        height: deviceSize.height * 0.13,
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 50.0),
+            child: Text(
+              "Google Developer Expert for Flutter. Passionate #Flutter, #Android Developer. #Entrepreneur #YouTuber",
+              style: TextStyle(fontWeight: FontWeight.w700),
+              textAlign: TextAlign.center,
+              maxLines: 3,
+              softWrap: true,
             ),
           ),
+        ),
+      );
 
-          FittedBox(
-            fit: BoxFit.cover,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                ProfileTile(
-                  title: "Location",
-                  subtitle: "New Delhi",
+  Widget accountColumn() => FittedBox(
+        fit: BoxFit.fill,
+        child: Container(
+          height: deviceSize.height * 0.3,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              FittedBox(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    ProfileTile(
+                      title: "Website",
+                      subtitle: "about.me/imthepk",
+                    ),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    ProfileTile(
+                      title: "Phone",
+                      subtitle: "+919876543210",
+                    ),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    ProfileTile(
+                      title: "YouTube",
+                      subtitle: "youtube.com/mtechviral",
+                    ),
+                  ],
                 ),
-                SizedBox(
-                  height: 10.0,
+              ),
+              FittedBox(
+                fit: BoxFit.cover,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    ProfileTile(
+                      title: "Location",
+                      subtitle: "New Delhi",
+                    ),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    ProfileTile(
+                      title: "Email",
+                      subtitle: "mtechviral@gmail.com",
+                    ),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    ProfileTile(
+                      title: "Facebook",
+                      subtitle: "fb.com/imthepk",
+                    ),
+                  ],
                 ),
-                ProfileTile(
-                  title: "Email",
-                  subtitle: "mtechviral@gmail.com",
-                ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                ProfileTile(
-                  title: "Facebook",
-                  subtitle: "fb.com/imthepk",
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
-    ),
-  );
-
-
-
-
-  Widget followColumn(Size deviceSize) => Container(
-        height: deviceSize.height * 0.13,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            ProfileTile(
-              title: "1.5K",
-              subtitle: "Posts",
-            ),
-            ProfileTile(
-              title: "2.5K",
-              subtitle: "Followers",
-            ),
-            ProfileTile(
-              title: "10K",
-              subtitle: "Comments",
-            ),
-            ProfileTile(
-              title: "1.2K",
-              subtitle: "Following",
-            )
-          ],
+              )
+            ],
+          ),
         ),
       );
 
@@ -195,9 +165,29 @@ class ProfileOnePage extends StatelessWidget {
     deviceSize = MediaQuery.of(context).size;
     return _scaffold();
   }
-
-
-
-
-
 }
+
+Widget followColumn(Size deviceSize) => Container(
+      height: deviceSize.height * 0.13,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          ProfileTile(
+            title: "1.5K",
+            subtitle: "Posts",
+          ),
+          ProfileTile(
+            title: "2.5K",
+            subtitle: "Followers",
+          ),
+          ProfileTile(
+            title: "10K",
+            subtitle: "Comments",
+          ),
+          ProfileTile(
+            title: "1.2K",
+            subtitle: "Following",
+          )
+        ],
+      ),
+    );
