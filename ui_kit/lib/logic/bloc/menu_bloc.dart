@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:ui_kit/logic/viewmodel/MenuViewModel.dart';
+import 'package:ui_kit/logic/viewmodel/menu_view_model.dart';
 import 'package:ui_kit/model/menu.dart';
 
 class MenuBloc {

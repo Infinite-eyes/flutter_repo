@@ -2,7 +2,7 @@
 
 import 'dart:async';
 
-import 'package:ui_kit/logic/viewmodel/PostViewModel.dart';
+import 'package:ui_kit/logic/viewmodel/post_view_model.dart';
 import 'package:ui_kit/model/post.dart';
 
 

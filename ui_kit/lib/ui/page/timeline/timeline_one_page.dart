@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ui_kit/logic/bloc/post_bloc.dart';
 import 'package:ui_kit/model/post.dart';
-import 'package:ui_kit/ui/widgets/LabelIcon.dart';
+import 'package:ui_kit/ui/widgets/label_icon.dart';
 import 'package:ui_kit/ui/widgets/common_divider.dart';
 import 'package:ui_kit/ui/widgets/common_drawer.dart';
 import 'package:ui_kit/utils/uidata.dart';

@@ -1,8 +1,9 @@
 
 
-import 'package:ui_kit/services/abstract/IOTPService.dart';
+import 'package:ui_kit/services/abstract/i_otp_service.dart';
 import 'package:ui_kit/services/mock/mock_otp_service.dart';
-
+import 'package:ui_kit/services/restclient.dart';
+import 'package:ui_kit/services/real/real_otp_service.dart';
 enum Flavor { MOCK, PRO }
 
 class Injector{
@@ -23,11 +24,8 @@ class Injector{
       case Flavor.MOCK:
         return MockOTPService();
       default:
-        // return OTPS
-
+        return OTPService(new RestClient());
     }
   }
-
-
 
 }
